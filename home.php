@@ -55,7 +55,7 @@ require 'footer.php';
                     <div class="mt-4 flex justify-between">
                         <div>
                             <h3 class="text-sm text-gray-700">
-                                <a href="#">
+                                <a href="details.php?id_publicacion=' .$publis['id_publicacion'].'">
                                     <span aria-hidden="true" class="absolute inset-0"></span>
                                     ' .
                     $publis['producto'] .
