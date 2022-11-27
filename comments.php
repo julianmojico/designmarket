@@ -1,7 +1,9 @@
 <?php
+require 'add_comment.php';
+require 'utils.php';
 
 $queryComments =
-    'SELECT comentario,nombre,apellido FROM comentarios C
+    'SELECT comentario,nombre,apellido,fecha,avatar FROM comentarios C
     INNER JOIN usuarios u on C.id_usuario = u.id_usuario
     WHERE C.id_publicacion=' .$_GET['id_publicacion'] . '';
 
@@ -15,8 +17,8 @@ while ($comment = mysqli_fetch_assoc($respComments)){
       <h1 class="text-lg text-gray-700 font-semibold hover:underline cursor-pointer">Valoración</h1>
       <div class="flex justify-between items-center">
           <div class="mt-4 flex items-center space-x-4 py-6">
-            <img class="w-12 h-12 rounded-full" src="https://images.unsplash.com/photo-1593104547489-5cfb3839a3b5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1036&q=80" alt="" />
-            <div class="text-sm font-semibold">' .$comment['nombre'] .' '. $comment['apellido'] . ' • <span class="font-normal"> 5 minutes ago</span></div>
+            <img class="w-12 h-12 rounded-full" src="' .$comment['avatar'] . '" alt="" />
+            <div class="text-sm font-semibold">' .$comment['nombre'] .' '. $comment['apellido'] . ' • <span class="font-normal">' .relativeTime($comment['fecha']) . '</span></div>
             <div class="mt-4">
    </div>
           </div>
@@ -43,4 +45,5 @@ while ($comment = mysqli_fetch_assoc($respComments)){
 ';
 }
 
+$comments .= $add_comment;
 ?>
