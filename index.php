@@ -25,7 +25,7 @@ if(isset($_SESSION["id"])){
     }
     else{
       echo
-      "<script> alert('Usuario/mail no registrado!'); </script>";
+      "<script> alert('No se encuentra registrado!'); </script>";
     }
   }
 ?>
