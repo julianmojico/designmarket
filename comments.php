@@ -13,14 +13,10 @@ while ($comment = mysqli_fetch_assoc($respComments)){
             <div class="my-10 bg-gray-100 flex items-center justify-center">
   <div class="px-3 min-w-[80%] max-w-[80%]">
     <div class="bg-white rounded-2xl px-10 py-8 shadow-lg hover:shadow-2xl transition duration-500">
-      <!-- <div class="w-14 h-14 bg-yellow-500 rounded-full flex items-center justify-center font-bold text-white">LOGO</div> -->
-      <h1 class="text-lg text-gray-700 font-semibold hover:underline cursor-pointer">Valoración</h1>
       <div class="flex justify-between items-center">
           <div class="mt-4 flex items-center space-x-4 py-6">
             <img class="w-12 h-12 rounded-full" src="' .$comment['avatar'] . '" alt="" />
             <div class="text-sm font-semibold">' .$comment['nombre'] .' '. $comment['apellido'] . ' • <span class="font-normal">' .relativeTime($comment['fecha']) . '</span></div>
-            <div class="mt-4">
-   </div>
           </div>
           <div id="stars" class="flex">
            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
