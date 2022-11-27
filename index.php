@@ -15,7 +15,10 @@ if(isset($_SESSION["id"])){
         "<script> alert('Password Correcto'); </script>";
         $_SESSION["login"] = true;
         $_SESSION["id"] = $row["id_usuario"];
+        $_SESSION["avatar"] = $row["avatar"];
         $_SESSION["role"] = $row["id_rol"];
+        $_SESSION["nombre"] = $row["nombre"];
+        $_SESSION["apellido"] = $row["apellido"];
         header("Location: index.php");
       }
       else{

@@ -1,12 +1,26 @@
 <?php 
+require 'config.php';
+$id_publicacion = $_GET["id_publicacion"];
+
+//TODO: probar con $_SESSION["LOGIN"] SIN ISSET. Tambien hiddear el comment box si no esta logueado
+if (isset($_SESSION["id"])) {
+    $userId = $_SESSION["id"];
+    $userName = $_SESSION["nombre"];
+    $userLastname = $_SESSION["apellido"];
+    $userAvatar = $_SESSION["avatar"];
+    $time = time();
+    if (isset($_POST["comment"])) {
+      $newComment = $_POST["comment"];
+      $insertComment = mysqli_query($sqlConnect, "INSERT INTO `comentarios` values (null,'$userId','$id_publicacion','$newComment',$time)");
+    }
+  }
 
 $add_comment = '
 
 <div class="my-10 bg-gray-100 flex items-center justify-center">
   <div class="px-3 min-w-[80%] max-w-[80%]">
     <div class="bg-white rounded-2xl px-10 py-8 shadow-lg hover:shadow-2xl transition duration-500">
-      <!-- <div class="w-14 h-14 bg-yellow-500 rounded-full flex items-center justify-center font-bold text-white">LOGO</div> -->
-      <h1 class="text-lg text-gray-700 font-semibold hover:underline cursor-pointer">Agregar valoración</h1>
+      <h1 class="text-lg text-gray-700 font-semibold">Agregar valoración</h1>
       <div class="flex justify-between items-center">
           <div class="mt-4 flex items-center space-x-4 py-6">
             <img class="w-12 h-12 rounded-full" src="https://picsum.photos/50.webp?random=8" alt="" />
@@ -28,13 +42,15 @@ $add_comment = '
        </div>
         </div>
         
-        <div class="mt-3 p-3 w-full">
-        <textarea rows="3" class="border p-2 rounded w-full" placeholder="Write something..."></textarea>
-        </div>
-
-        <div class="flex justify-between mx-3">
-        <button type="submit" class="mt-6 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Envíar</button>
-        </div>
+        <form method="post" action="details.php?id_publicacion=' . $id_publicacion . '">
+            <div class="mt-3 p-3 w-full">
+            <textarea name="comment" rows="3" class="border p-2 rounded w-full" placeholder="Añade tu comentario..."></textarea>
+            </div>
+            <div class="flex justify-between mx-3">
+            <button type="submit" class="mt-6 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Envíar</button>
+            <input type="number" hidden name="id_publicacion" value="' . $id_publicacion . '" />
+            </div>
+        </form>
 
       </div>
     </div>
