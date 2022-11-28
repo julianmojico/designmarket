@@ -1,6 +1,11 @@
 <?php 
 require 'config.php';
-$id_publicacion = $_GET["id_publicacion"];
+
+if (isset($_GET["id_publicacion"])){
+    $id_publicacion = $_GET["id_publicacion"];
+} else {
+$id_publicacion = $_POST["id_publicacion"];
+}
 
 //TODO: probar con $_SESSION["LOGIN"] SIN ISSET. Tambien hiddear el comment box si no esta logueado
 if (isset($_SESSION["id"])) {
@@ -12,6 +17,8 @@ if (isset($_SESSION["id"])) {
     if (isset($_POST["comment"])) {
       $newComment = $_POST["comment"];
       $insertComment = mysqli_query($sqlConnect, "INSERT INTO `comentarios` values (null,'$userId','$id_publicacion','$newComment',$time)");
+      $url = 'details.php?id_publicacion=' . $id_publicacion;
+      header("Location: ".urldecode($url)."");
     }
   }
 
@@ -42,7 +49,7 @@ $add_comment = '
        </div>
         </div>
         
-        <form method="post" action="details.php?id_publicacion=' . $id_publicacion . '">
+        <form method="post" action="details.php">
             <div class="mt-3 p-3 w-full">
             <textarea name="comment" rows="3" class="border p-2 rounded w-full" placeholder="Añade tu comentario..."></textarea>
             </div>

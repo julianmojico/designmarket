@@ -16,6 +16,10 @@ function relativeTime($time) {
     $diff = ($now-$time);
     $secondsLeft = $diff;
 
+    if ($secondsLeft < 5){
+        return 'Ahora';
+    }
+
     for($i=6;$i>-1;$i--)
     {
          $w[$i] = intval($secondsLeft/$d[$i][0]);
@@ -26,8 +30,8 @@ function relativeTime($time) {
          }
 
     }
-
-    return $return;
+    $array = explode(" ", $return, -3);
+    return implode(" ", $array);
 }
 
 ?>
