@@ -1,24 +1,26 @@
 <?php
 require 'config.php'; 
+require 'utils.php' ;
+
+if(isset($_GET["disconnect"])){
+    session_destroy();
+    header("Refresh:0");
+}
 
 if(isset($_SESSION["id"])){
     header("Location: home.php");
   }
   if(isset($_POST["submit"])){
+
     $usuario = $_POST["usuario"];
     $password = $_POST["password"];
     $login = mysqli_query($sqlConnect, "SELECT * FROM usuarios WHERE nombre_usuario = '$usuario' OR correo = '$usuario'");
     $row = mysqli_fetch_assoc($login);
     if(mysqli_num_rows($login) > 0){
-      $checkPass = password_verify($password, $row['contraseña']);
-      if($checkPass == 1){
+      $passwordOk = password_verify($password, $row['contraseña']);
+      if($passwordOk == 1){
         "<script> alert('Password Correcto'); </script>";
-        $_SESSION["login"] = true;
-        $_SESSION["id"] = $row["id_usuario"];
-        $_SESSION["avatar"] = $row["avatar"];
-        $_SESSION["role"] = $row["id_rol"];
-        $_SESSION["nombre"] = $row["nombre"];
-        $_SESSION["apellido"] = $row["apellido"];
+        updateSessionData($row);
         header("Location: index.php");
       }
       else{
@@ -50,10 +52,9 @@ if(isset($_SESSION["id"])){
             <div>
                 <img class="mx-auto h-12 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
                     alt="Tienda Design">
-                <h2 class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">Bienvenido a Tienda Design
-                </h2>
+                <h2 class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">Tienda Design</h2>
                 <p class="mt-2 text-center text-sm text-gray-600">
-                    <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">Acceso exclusivo</a>
+                    <a href="profile.php" class="font-medium text-indigo-600 hover:text-indigo-500">Registrarse</a>
                 </p>
             </div>
             <form class="mt-8 space-y-6" action="#" method="POST">

@@ -95,7 +95,7 @@ if (isset($_SESSION["id"])) {
                                                     class="relative cursor-pointer rounded-md bg-white font-medium text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-500">
                                                     <span>Subir archivo</span>
                                                     <input name="file-upload" type="file" class="sr-only">
-                                                    <input name="url_imagen" type="text" hidden value="https://wepik.com/images/content-landing/flyers/og-flyers.png"/>
+                                                    <input name="url_imagen" type="text" hidden value="https://picsum.photos/600"/>
                                                 </label>
                                                 <p class="pl-1">o arrastrar y soltar</p>
                                             </div>

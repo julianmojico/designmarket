@@ -1,5 +1,16 @@
 <?php 
 
+function updateSessionData($row){
+    $_SESSION["login"] = true;
+    $_SESSION["id"] = $row["id_usuario"];
+    $_SESSION["nombre_usuario"] = $row["nombre_usuario"];
+    $_SESSION["avatar"] = $row["avatar"];
+    $_SESSION["bio"] = $row["bio"];
+    $_SESSION["nombre"] = $row["nombre"];
+    $_SESSION["apellido"] = $row["apellido"];
+    $_SESSION["correo"] = $row["correo"];
+}
+
 function relativeTime($time) {
     $d[0] = array(1,"segundo");
     $d[1] = array(60,"minuto");

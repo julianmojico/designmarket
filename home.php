@@ -2,6 +2,15 @@
 require 'config.php';
 require 'navbar.php';
 require 'footer.php';
+
+if (isset($_SESSION["id"])) {
+
+
+
+  } else {
+    header("Location: index.php");
+  }
+
 ?>
 
 
