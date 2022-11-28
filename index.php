@@ -19,18 +19,17 @@ if(isset($_SESSION["id"])){
     if(mysqli_num_rows($login) > 0){
       $passwordOk = password_verify($password, $row['contraseña']);
       if($passwordOk == 1){
-        "<script> alert('Password Correcto'); </script>";
         updateSessionData($row);
         header("Location: index.php");
       }
       else{
         echo
-        "<script> alert('Password Incorrecto'); </script>";
+        "<script> alert('La contraseña es incorrecta'); </script>";
       }
     }
     else{
       echo
-      "<script> alert('No se encuentra registrado!'); </script>";
+      "<script> alert('El usuario no está registrado'); </script>";
     }
   }
 ?>
