@@ -9,6 +9,8 @@ function updateSessionData($row){
     $_SESSION["nombre"] = $row["nombre"];
     $_SESSION["apellido"] = $row["apellido"];
     $_SESSION["correo"] = $row["correo"];
+    $_SESSION["correo"] = $row["correo"];
+    $_SESSION["id_rol"] = $row["id_rol"];
 }
 
 function relativeTime($time) {

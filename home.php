@@ -25,16 +25,16 @@ if (isset($_SESSION["id"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        tailwind.config = {
-            plugins: [
-                require('@tailwindcss/aspect-ratio'),
-            ],
-            theme: {
-                container: {
-                    center: true,
-                },
+    tailwind.config = {
+        plugins: [
+            require('@tailwindcss/aspect-ratio'),
+        ],
+        theme: {
+            container: {
+                center: true,
             },
-        }
+        },
+    }
     </script>
 </head>
 

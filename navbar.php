@@ -31,14 +31,10 @@ $navbar = '
         </div>
       </div>
       <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-      <div class="mx-5 flex justify-between">
-
-        <form method="post" action="add_product.php">
-              <button type="submit" class="rounded-md border border-transparent bg-indigo-600 py-1 px-8 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">+  Agregar</button>
-          </form>
+      <div class="mx-5 flex justify-between">¿
+              <a href="admin.php"><button href="admin.php" class="mx-3 rounded-md border border-transparent bg-indigo-600 py-1 px-5 text-base font-small text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Usuarios</button></a>
+              <a href="add_product.php"><button type="submit" class="rounded-md border border-transparent bg-indigo-600 py-1 px-5 text-base font-small text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">+ Agregar</button></a>
         </div>
-
-
 
         <div class="relative ml-3">
           <a href="./profile.php">
