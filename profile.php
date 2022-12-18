@@ -54,6 +54,7 @@ if (isset($_SESSION["id"])) {
 
     if ($is_admin_update){
 
+        $disabled = '';
         $register = false;
         $selectUser = mysqli_query($sqlConnect, "SELECT id_usuario,avatar,nombre,apellido,nombre_usuario,id_rol,correo,bio FROM `usuarios` WHERE id_usuario=$userId");
         $row = mysqli_fetch_assoc($selectUser);
@@ -117,9 +118,13 @@ if (isset($_SESSION["id"])) {
                     </div>
                 </div>
                 <div class="mt-5 md:col-span-2 md:mt-0">
-                        <form action="<?php echo $register ? '?registrate' : '?update' ?>" method="POST">
-                        <!-- <form action="<?php echo $register ? '?registrate' : '?update' ?> <?php echo $is_admin_update ? '?id_usuario='.$userId.'' : null ?>" method="POST"> -->
+                        <!-- <form action="<?php echo $register ? '?registrate' : '?update' ?>" method="POST"> -->
+                        <form action="<?php echo $register ? '?registrate' : '?update'?><?php echo $is_admin_update ? '&id_usuario='.$userId.'' : null ?>" method="POST">
                             <div class="shadow sm:overflow-hidden sm:rounded-md">
+                            <?php echo $is_admin_update ? 
+                            ' <input hidden name="id_usuario" value="'.$userId.'" type="text"></input>'
+                            : null ?>
+
                                 <div class="space-y-6 bg-white px-4 py-5 sm:p-6">
 
                                 <label for="nombre" class="block text-lg font-light text-black-700">Nombre</label>
@@ -153,7 +158,8 @@ if (isset($_SESSION["id"])) {
                                     <input <?php echo $register ? 'required' : '' ?> name="nombre_usuario" rows="1"
                                         type="text" <?php echo $register? '' : "value=$userPrimary" ?>
                                         class="bg-white-200 focus:bg-white-300 border border-gray-300 text-gray-800 font-extralight text-sm rounded-lg focus:border-indigo-500 focus:ring-indigo-500  block w-full p-2.5"
-                                        placeholder="minombre.deusuario"></input>
+                                        placeholder="minombre.deusuario">
+                                    </input>
                                 </div>
 
                                 <label for="bio" class="block text-lg font-light text-black-700">Sobre mi</label>
