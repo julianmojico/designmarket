@@ -4,8 +4,7 @@ require 'navbar.php';
 require 'footer.php';
 require 'utils.php';
 
-//TODO: condicional si es admin
-if (isset($_SESSION["id"])) {
+if (isset($_SESSION["id"]) && ($_SESSION["id_rol"] == 1)) {
 
     $userId = $_SESSION["id"];
     $userName = $_SESSION["nombre"];
