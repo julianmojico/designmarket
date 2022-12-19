@@ -1,4 +1,8 @@
 <?php
+
+error_reporting(E_ERROR | E_PARSE);
+
+
 require 'add_comment.php';
 require 'utils.php';
 
